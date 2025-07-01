@@ -7,7 +7,22 @@ import { Button } from '@/components/ui/button';
 import { Loader2, Power, RefreshCw, Play } from 'lucide-react';
 
 export default function Dashboard() {
-  const [data, setData] = useState(null);
+  type ServerStatus = {
+  motd: string;
+  version: string;
+  uptime: string;
+  online: boolean;
+  players: {
+    online: number;
+    max: number;
+    list: string[];
+  };
+  cpuUsage: number;
+  ramUsedMb: number;
+  ramTotalMb: number;
+};
+
+  const [data, setData] = useState<ServerStatus | null>(null);
   const [loading, setLoading] = useState(true);
   const [uptime, setUptime] = useState('');
 
